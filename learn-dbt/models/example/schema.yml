@@ -1,0 +1,38 @@
+
+version: 2
+
+models:
+    - name: my_first_dbt_model
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: my_second_dbt_model
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: customer_purchases
+      description: "Total purchases by a customer"
+      columns:
+        - name: c_custkey
+          tests:
+            - unique
+            - not_null
+
+    - name: cumulative_orders_by_date
+      description: "Total Sales by Day"
+      columns:
+        - name: o_orderdate
+          tests:
+            - unique
+            - not_null
+              
