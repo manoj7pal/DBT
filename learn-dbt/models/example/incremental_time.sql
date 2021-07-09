@@ -1,4 +1,4 @@
-{{ config(materialized='incremental', unique_key='TIME_VALUE') }}
+{{ config(materialized='incremental', unique_key='TIME_VALUE', alias='time_model', schema='manojpal', database='analytics_test') }}
 
 WITH data AS
 (
@@ -11,6 +11,7 @@ WITH data AS
 SELECT * 
 FROM data
 WHERE TIME_VALUE  <= CURRENT_TIME
+AND {{ var('var1') }} in (1,2,3)
 
 {% if is_incremental() %}
 AND TIME_VALUE > ( SELECT MAX(TIME_VALUE) FROM {{this}} )
