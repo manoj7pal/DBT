@@ -36,3 +36,4 @@ models:
             - unique
             - not_null
               
+    - name: incremental_model          
