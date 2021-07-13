@@ -15,4 +15,4 @@ AND {{ var('var1') }} in (1,2,3)
 
 {% if is_incremental() %}
 AND TIME_VALUE > ( SELECT MAX(TIME_VALUE) FROM {{this}} )
-{% endif %}
+{% endif %} 

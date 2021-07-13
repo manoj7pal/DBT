@@ -10,6 +10,9 @@ models:
             tests:
                 - unique
                 - not_null
+                - accepted_values:
+                    values: [1,2,3]
+                    quote: false
 
     - name: my_second_dbt_model
       description: "A starter dbt model"
@@ -39,4 +42,17 @@ models:
     - name: incremental_model
     - name: eph_1992_orders
     - name: orders_1992
-    - name: incremental_time          
+    - name: incremental_time 
+    - name: status
+    - name: tests
+      description : "A sample model to test the testing functionality of dbt."         
+      columns: 
+        - name: Status
+          tests:
+            - accepted_values:
+                values: ["Active", "Inactive", "Suspended"]
+            - not_null
+            - unique
+            - relationships:
+                to: ref('status')
+                field: Status
