@@ -49,6 +49,7 @@ models:
       columns: 
         - name: Status
           tests:
+            - check_terminated_status
             - accepted_values:
                 values: ["Active", "Inactive", "Suspended"]
             - not_null
@@ -56,3 +57,15 @@ models:
             - relationships:
                 to: ref('status')
                 field: Status
+
+    - name: playing_with_tests
+      description: "Playing with test model"
+      columns:
+        - name: c_custkey
+          tests:
+            - not_null
+            - unique
+        - name: c_mktsegment
+          tests: 
+            - accepted_values:
+                values: ["BUILDING", "AUTOMOBILE", "MACHINERY", "HOUSEHOLD", "FURNITURE"]
