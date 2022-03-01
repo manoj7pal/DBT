@@ -5,7 +5,7 @@ models:
       description: Staging Customer table
       columns:
         - name: customer_id
-          descrition: Primary key for stg_customers table
+          description: Primary key for stg_customers table
           tests:
             - unique
             - not_null
