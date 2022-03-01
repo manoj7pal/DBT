@@ -2,28 +2,30 @@ version: 2
 
 models:
     - name: stg_customers
+      description: Staging Customer table
       columns:
         - name: customer_id
+          descrition: Primary key for stg_customers table
           tests:
             - unique
             - not_null
     
     - name: stg_orders
+      description: Staging Orders table
       columns:
         - name: order_id
+          description: Primary key for stg_orders table
           tests:
             - unique
             - not_null
         - name: status
+          description: '{{ doc("order_status") }}'
           tests:
             - accepted_values:
-                values:
-                    - placed
-                    - shipped
-                    - completed
-                    - return_pending
-                    - returned
+                values: ['placed','shipped','completed','return_pending','returned']
+
         - name: customer_id
+          descrition: References to stg_customers.customer_id field
           tests: 
             - relationships:
                 to: ref('stg_customers')
