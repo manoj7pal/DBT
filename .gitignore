@@ -3,3 +3,7 @@ target/
 dbt_packages/
 logs/
 learn-dbt2/.vscode/*
+.python-version
+dbtenv/*
+settings.json
+install-pyenv-win.ps1
