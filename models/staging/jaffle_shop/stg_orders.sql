@@ -6,8 +6,10 @@ WITH orders as (
         order_date,
         status
 
-    from {{ source('jaffle_shop', 'orders') }}
+    from {{ source('raw', 'orders') }}
 
 )
 
 select * from orders
+
+{# {{limit_data_in_dev(column_name = 'order_date', interval_days = -5)}} #}
